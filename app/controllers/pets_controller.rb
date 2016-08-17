@@ -1,9 +1,11 @@
 #
 class PetsController < ApplicationController
-  before_filter :set_pet, only: [:show, :update, :destroy]
+  before_action :set_pet, only: [:show, :update, :destroy]
 
   def index
-    render json: Pet.all
+    @pets = Pet.all
+
+    render json: @pets
   end
 
   def show
@@ -14,7 +16,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
 
     if @pet.save
-      render json: @pet, status: :created
+      render json: @pet, status: :created, location: @pet
     else
       render json: @pet.errors, status: :unprocessable_entity
     end
@@ -22,7 +24,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      render json: @pet, status: :ok
+      head :no_content
     else
       render json: @pet.errors, status: :unprocessable_entity
     end
@@ -40,6 +42,6 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:title, :content)
+    params.require(:pet).permit(:name, :breed, :born_on)
   end
 end
