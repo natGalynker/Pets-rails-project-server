@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160816232221) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "pets", force: :cascade do |t|
-    t.string   "name"
-    t.string   "breed"
+    t.text     "name"
+    t.text     "breed"
     t.date     "born_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
