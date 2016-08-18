@@ -1,6 +1,6 @@
 #
-class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :update, :destroy]
+class PetsController < OpenReadController
+  before_action :set_pet, only: [:show, :update, :destroy, :create]
 
   def index
     @pets = Pet.all
@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
+    @pet = current_user.pets.build(pet_params)
 
     if @pet.save
       render json: @pet, status: :created, location: @pet
@@ -38,10 +38,11 @@ class PetsController < ApplicationController
   private
 
   def set_pet
-    @pet = Pet.find(params[:id])
+    @pet = current_user.pets.find(params[:id])
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :born_on)
+    params.require(:pet).permit(:name, :breed, :born_on, :gender, :user_id)
   end
+  private :set_pet, :pet_params
 end
