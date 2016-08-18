@@ -4,6 +4,7 @@ class CreatePets < ActiveRecord::Migration
       t.text :name
       t.text :breed
       t.date :born_on
+      t.text :gender
 
       t.timestamps null: false
     end

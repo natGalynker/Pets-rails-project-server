@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160816232221) do
     t.text     "name"
     t.text     "breed"
     t.date     "born_on"
+    t.text     "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
