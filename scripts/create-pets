@@ -1,0 +1,10 @@
+curl --include --request POST http://localhost:3000/pets \
+  --header "Content-Type: application/json" \
+  --data '{
+    "credentials": {
+      "name": "Pet Name",
+      "breed": "Animal",
+      "born_on": "2016-05-13",
+      "gender": "They"
+    }
+  }'

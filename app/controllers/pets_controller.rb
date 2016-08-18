@@ -1,9 +1,11 @@
 #
-class PetsController < ApplicationController
-  before_filter :set_pet, only: [:show, :update, :destroy]
+class PetsController < OpenReadController
+  before_action :set_pet, only: [:show, :update, :destroy, :create]
 
   def index
-    render json: Pet.all
+    @pets = Pet.all
+
+    render json: @pets
   end
 
   def show
@@ -11,10 +13,10 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
+    @pet = current_user.pets.build(pet_params)
 
     if @pet.save
-      render json: @pet, status: :created
+      render json: @pet, status: :created, location: @pet
     else
       render json: @pet.errors, status: :unprocessable_entity
     end
@@ -22,7 +24,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      render json: @pet, status: :ok
+      head :no_content
     else
       render json: @pet.errors, status: :unprocessable_entity
     end
@@ -36,10 +38,11 @@ class PetsController < ApplicationController
   private
 
   def set_pet
-    @pet = Pet.find(params[:id])
+    @pet = current_user.pets.find(params[:id])
   end
 
   def pet_params
-    params.require(:pet).permit(:title, :content)
+    params.require(:pet).permit(:name, :breed, :born_on, :gender, :user_id)
   end
+  private :set_pet, :pet_params
 end
