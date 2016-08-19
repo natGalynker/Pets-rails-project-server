@@ -1,7 +1,9 @@
 #
 class PetsController < OpenReadController
-  before_action :set_pet, only: [:show, :update, :destroy, :create]
+  before_action :set_pet, only: [:update, :destroy]
 
+  # GET /pets/1
+  # GET /pets/1.json
   def index
     @pets = Pet.all
 
@@ -11,6 +13,8 @@ class PetsController < OpenReadController
   def show
     render json: @pet
   end
+  # POST /pets/1
+  # POST /pets/1.json
 
   def create
     @pet = current_user.pets.build(pet_params)
@@ -22,6 +26,9 @@ class PetsController < OpenReadController
     end
   end
 
+# PATCH /pets/1
+# PATCH /pets/1.json
+
   def update
     if @pet.update(pet_params)
       head :no_content
@@ -29,6 +36,8 @@ class PetsController < OpenReadController
       render json: @pet.errors, status: :unprocessable_entity
     end
   end
+# DESTROY /pets/1
+# DESTROY /pets/1.json
 
   def destroy
     @pet.destroy
