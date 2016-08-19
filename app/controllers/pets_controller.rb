@@ -26,8 +26,8 @@ class PetsController < OpenReadController
     end
   end
 
-# PATCH /pets/1
-# PATCH /pets/1.json
+  # PATCH /pets/1
+  # PATCH /pets/1.json
 
   def update
     if @pet.update(pet_params)
@@ -36,8 +36,9 @@ class PetsController < OpenReadController
       render json: @pet.errors, status: :unprocessable_entity
     end
   end
-# DESTROY /pets/1
-# DESTROY /pets/1.json
+
+  # DESTROY /pets/1
+  # DESTROY /pets/1.json
 
   def destroy
     @pet.destroy

@@ -66,8 +66,9 @@ curl --request POST http://localhost:3000/pets \
   --header "Content-Type: application/json" \
   --data '{
     "pet": {
-      "name": "example",
-      "breed": "animal",
-      "gender": "m"
+     "name": "example",
+     "breed": "animal",
+     "born_on": "2016-09-01",
+     "gender": "m"
     }
   }'
