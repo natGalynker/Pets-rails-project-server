@@ -1,5 +1,5 @@
 #
-class PetsController < OpenReadController
+class PetsController < ProtectedController
   before_action :set_pet, only: [:update, :destroy]
 
   # GET /pets/1
