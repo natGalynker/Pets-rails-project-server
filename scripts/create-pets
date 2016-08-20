@@ -1,10 +1,27 @@
 curl --include --request POST http://localhost:3000/pets \
   --header "Content-Type: application/json" \
   --data '{
-    "credentials": {
+    "pet": {
       "name": "Pet Name",
       "breed": "Animal",
-      "born_on": "2016-05-13",
       "gender": "They"
     }
   }'
+
+
+  curl --request POST http://localhost:3000/pets   --header "Authorization: Token token=BAhJIiUxNzFlNDU0MzJiZTA3MTg5MjQ0NDZhZGRmZWFlNzYyNAY6BkVG--ae0a64f8734cd24c3ed00dcb97f89ae98e8df46a"   --header "Content-Type: application/json"   --data '{
+      "pet": {
+        "name": "example",
+        "breed": "animal",
+        "gender": "m"
+      }
+    }'
+
+    curl --request POST http://localhost:3000/pets --header "Authorization: Token token=BAhJIiVlOTc1MzlhMzY2OWMyZDdhMTU4OGNjNWZkMjcyNDY3MAY6BkVG--7b82835e5ff249b2c85acc65c4bea16892d629c0 --header "Content-Type: application/json" --data '{
+      "pet": {
+        "name": "minx",
+        "breed": "short haired black cat",
+        "born_on": "2010-04-12",
+        "gender": "m"
+      }
+    }'
