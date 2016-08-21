@@ -9,3 +9,21 @@ curl --include --request POST http://localhost:3000/sign-up \
       "password_confirmation": "vet123"
     }
   }'
+
+curl --include --request POST http://localhost:3000/sign-up \
+ --header "Content-Type: application/json" \
+ --data '{
+   "credentials": {
+     "email": "once@again.com",
+     "password": "last123",
+     "password_confirmation": "last123"
+   }
+ }'
+
+
+ curl --include --request POST http://localhost:3000/sign-in  --header "Content-Type: application/json"  --data '{
+   "credentials": {
+     "email": "once@again.com",
+     "password": "last123"
+   }
+ }'

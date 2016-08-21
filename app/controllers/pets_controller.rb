@@ -18,7 +18,8 @@ class PetsController < OpenReadController
 
   def create
     @pet = current_user.pets.build(pet_params)
-
+    # something similar to POST sign-in with creds linking to the sign-up form needs
+    # to go here to verify that such fields are not left blank
     if @pet.save
       render json: @pet, status: :created, location: @pet
     else
@@ -30,7 +31,7 @@ class PetsController < OpenReadController
   # PATCH /pets/1.json
 
   def update
-    if @pet.update(pet_params)
+    if @pet.update(add_params)
       head :no_content
     else
       render json: @pet.errors, status: :unprocessable_entity
@@ -41,7 +42,7 @@ class PetsController < OpenReadController
   # DESTROY /pets/1.json
 
   def destroy
-    @pet.destroy
+    @pet.current_user.pets.find.destroy
     head :no_content
   end
 
@@ -54,5 +55,10 @@ class PetsController < OpenReadController
   def pet_params
     params.require(:pet).permit(:name, :breed, :born_on, :gender)
   end
-  private :set_pet, :pet_params
+
+  def add_params
+    params.require(:medical).permit(:rabes_shot_date, :declawed,
+                                    :only_pet, :feral, :neutered)
+  end
+  private :set_pet, :pet_params, :add_params
 end
