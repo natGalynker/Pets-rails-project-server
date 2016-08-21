@@ -1,5 +1,5 @@
 class PetSerializer < ActiveModel::Serializer
-  attributes :id, :name, :born_on, :breed, :gender, :editable
+  attributes :id, :name, :born_on, :breed, :gender
   belongs_to :user
 
   def editable

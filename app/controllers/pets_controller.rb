@@ -1,11 +1,11 @@
 #
-class PetsController < ProtectedController
-  before_action :set_pet, only: [:update, :destroy]
+class PetsController < OpenReadController
+  before_action :set_pet, only: [:update, :destroy, :show]
 
   # GET /pets/1
   # GET /pets/1.json
   def index
-    @pets = Pet.all
+    @pets = current_user.pets
 
     render json: @pets
   end
@@ -52,7 +52,7 @@ class PetsController < ProtectedController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :born_on, :gender, :user_id)
+    params.require(:pet).permit(:name, :breed, :born_on, :gender)
   end
   private :set_pet, :pet_params
 end
