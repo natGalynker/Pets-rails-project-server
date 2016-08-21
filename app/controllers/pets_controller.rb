@@ -18,7 +18,7 @@ class PetsController < OpenReadController
 
   def create
     @pet = current_user.pets.build(pet_params)
-    # something similar to POST sign-in with creds linking to the sign-up form needs
+    # something similar to POST sign-in with creds linking to the sign-up form
     # to go here to verify that such fields are not left blank
     if @pet.save
       render json: @pet, status: :created, location: @pet
@@ -27,11 +27,28 @@ class PetsController < OpenReadController
     end
   end
 
+  # def signup
+  #   user = User.create(user_creds)
+  #   if user.valid?
+  #     render json: user, status: :created
+  #   else
+
+  # def changepw
+  #   if !current_user.authenticate(pw_creds[:old]) ||
+  #      (current_user.password = pw_creds[:new]).blank? ||
+  #      !current_user.save
+  #     head :bad_request
+  #   else
+  #     head :no_content
+  #   end
+  # end
   # PATCH /pets/1
   # PATCH /pets/1.json
 
   def update
-    if @pet.update(add_params)
+    @pet = current_user.find(params[:id])
+
+    if @pet.update(update_params)
       head :no_content
     else
       render json: @pet.errors, status: :unprocessable_entity
@@ -42,6 +59,8 @@ class PetsController < OpenReadController
   # DESTROY /pets/1.json
 
   def destroy
+    @pet = current_user.find(params[:id])
+
     @pet.current_user.pets.find.destroy
     head :no_content
   end
@@ -53,12 +72,15 @@ class PetsController < OpenReadController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :born_on, :gender)
+    params.require(:pet).permit(:name, :breed, :born_on, :gender, :only_pet,
+                                :owner_name, :only_pet, :neutered,
+                                :rabes_shot_date, :feral, :declawed)
   end
 
-  def add_params
-    params.require(:medical).permit(:rabes_shot_date, :declawed,
-                                    :only_pet, :feral, :neutered)
+  def update_params
+    params.require(:pet).permit(:only_pet, :neutered, :rabes_shot_date,
+                                :feral, :declawed, :owner_name)
   end
-  private :set_pet, :pet_params, :add_params
+
+  private :set_pet, :pet_params, :update_params
 end

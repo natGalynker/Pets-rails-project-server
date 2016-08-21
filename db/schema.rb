@@ -26,14 +26,22 @@ ActiveRecord::Schema.define(version: 20160816232221) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "pets", force: :cascade do |t|
-    t.text     "name",       null: false
-    t.text     "breed",      null: false
-    t.date     "born_on",    null: false
-    t.text     "gender",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.text     "name",            null: false
+    t.text     "breed",           null: false
+    t.date     "born_on",         null: false
+    t.text     "gender",          null: false
+    t.boolean  "neutered"
+    t.boolean  "feral"
+    t.boolean  "only_pet"
+    t.date     "rabes_shot_date"
+    t.boolean  "declawed"
+    t.text     "owner_name",      null: false
+    t.integer  "user_id",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "pets", ["user_id"], name: "index_pets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -47,4 +55,5 @@ ActiveRecord::Schema.define(version: 20160816232221) do
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
   add_foreign_key "examples", "users"
+  add_foreign_key "pets", "users"
 end
