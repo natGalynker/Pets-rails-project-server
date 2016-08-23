@@ -1,6 +1,6 @@
-curl --include --request GET http://localhost:3000/pets/$ID \
-  --header "Authorization: Token token=$TOKEN"
+# curl --include --request GET http://localhost:3000/pets/$ID \
+#   --header "Authorization: Token token=$TOKEN"
 
 
-  curl --include --request GET http://localhost:3000/pets/3 \
-   --header "Authorization: Token token=BAhJIiVjNzQ0ZGQ1NjQzMTlmZTkyMWJkYjhhYzJhMjgxMTcxMwY6BkVG--5e5a92f8e2b236da7a215aec944cc302fd003f5d"
+  curl --include --request GET http://localhost:3000/pets/1 \
+   --header "Authorization: Token token=BAhJIiU4ZjQzZGI1MTc2ZmMzMWM0Y2M3MTdmNTQ2NGU5MmZlYgY6BkVG--cc02e8692dce4652e5a6c6d21cde06a4b5d1326f"

@@ -1,4 +1,5 @@
 #
+# class PetsController < ProtectedController
 class PetsController < OpenReadController
   before_action :set_pet, only: [:update, :destroy, :show]
 
@@ -6,7 +7,6 @@ class PetsController < OpenReadController
   # GET /pets/1.json
   def index
     @pets = current_user.pets
-
     render json: @pets
   end
 
@@ -46,9 +46,7 @@ class PetsController < OpenReadController
   # PATCH /pets/1.json
 
   def update
-    @pet = current_user.find(params[:id])
-
-    if @pet.update(update_params)
+    if @pet.update(pet_params)
       head :no_content
     else
       render json: @pet.errors, status: :unprocessable_entity
@@ -59,9 +57,7 @@ class PetsController < OpenReadController
   # DESTROY /pets/1.json
 
   def destroy
-    @pet = current_user.find(params[:id])
-
-    @pet.current_user.pets.find.destroy
+    @pet.current_user.pets.destroy
     head :no_content
   end
 
@@ -77,10 +73,5 @@ class PetsController < OpenReadController
                                 :rabes_shot_date, :feral, :declawed)
   end
 
-  def update_params
-    params.require(:pet).permit(:only_pet, :neutered, :rabes_shot_date,
-                                :feral, :declawed, :owner_name)
-  end
-
-  private :set_pet, :pet_params, :update_params
+  private :set_pet, :pet_params
 end

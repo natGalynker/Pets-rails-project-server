@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20160816232221) do
     t.text     "breed",           null: false
     t.date     "born_on",         null: false
     t.text     "gender",          null: false
-    t.boolean  "neutered"
-    t.boolean  "feral"
-    t.boolean  "only_pet"
+    t.boolean  "neutered",        null: false
+    t.boolean  "feral",           null: false
+    t.boolean  "only_pet",        null: false
     t.date     "rabes_shot_date"
-    t.boolean  "declawed"
+    t.boolean  "declawed",        null: false
     t.text     "owner_name",      null: false
     t.integer  "user_id",         null: false
     t.datetime "created_at",      null: false

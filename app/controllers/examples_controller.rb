@@ -5,7 +5,7 @@ class ExamplesController < OpenReadController
   # GET /examples
   # GET /examples.json
   def index
-    @examples = Example.all
+    @examples = current_user.pets
 
     render json: @examples
   end
@@ -13,11 +13,12 @@ class ExamplesController < OpenReadController
   # GET /examples/1
   # GET /examples/1.json
   def show
-    render json: Example.find(params[:id])
+    render json: @pet
   end
 
   # POST /examples
   # POST /examples.json
+
   def create
     @example = current_user.examples.build(example_params)
 
