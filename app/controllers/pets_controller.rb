@@ -68,7 +68,7 @@ class PetsController < OpenReadController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :born_on, :gender, :only_pet,
+    params.require(:pet).permit(:name, :breed, :born_on, :gender,
                                 :owner_name, :only_pet, :neutered,
                                 :rabes_shot_date, :feral, :declawed)
   end
