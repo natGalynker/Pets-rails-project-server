@@ -27,21 +27,6 @@ class PetsController < OpenReadController
     end
   end
 
-  # def signup
-  #   user = User.create(user_creds)
-  #   if user.valid?
-  #     render json: user, status: :created
-  #   else
-
-  # def changepw
-  #   if !current_user.authenticate(pw_creds[:old]) ||
-  #      (current_user.password = pw_creds[:new]).blank? ||
-  #      !current_user.save
-  #     head :bad_request
-  #   else
-  #     head :no_content
-  #   end
-  # end
   # PATCH /pets/1
   # PATCH /pets/1.json
 
@@ -57,11 +42,9 @@ class PetsController < OpenReadController
   # DESTROY /pets/1.json
 
   def destroy
-    @pet.current_user.pets.destroy
+    @pet.destroy
     head :no_content
   end
-
-  private
 
   def set_pet
     @pet = current_user.pets.find(params[:id])

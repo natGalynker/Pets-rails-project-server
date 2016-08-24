@@ -22,7 +22,8 @@ curl --include --request POST http://localhost:3000/pets \
         "name": "minx",
         "breed": "short haired black cat",
         "born_on": "2010-04-12",
-        "gender": "m"
+        "gender": "m",
+        "neutered": :
       }
     }'
 

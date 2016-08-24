@@ -14,5 +14,5 @@ class Pet < ActiveRecord::Base
   # validates :feral, presence: true
   # validates :user, uniqueness: { scope: [:breed, :name, :born_on, :gender,
   #                                        :owner_name, :neutered, :only_pet,
-  #                                        :feral, :rabes_shot_date, :declawed] }
+  #                                       :feral, :rabes_shot_date, :declawed] }
 end
