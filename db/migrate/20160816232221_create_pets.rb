@@ -5,11 +5,11 @@ class CreatePets < ActiveRecord::Migration
       t.text :breed, null: false
       t.date :born_on, null: false
       t.text :gender,  null: false
-      t.boolean :neutered
-      t.boolean :feral
-      t.boolean :only_pet
-      t.boolean :rabes_shot
-      t.boolean :declawed
+      t.boolean :neutered, null: true
+      t.boolean :feral, null: true
+      t.boolean :only_pet, null: true
+      t.boolean :rabes_shot, null: true
+      t.boolean :declawed, null: true
       t.text :owner_name, null: false
       t.references :user, index: true, foreign_key: true, null: false
 
