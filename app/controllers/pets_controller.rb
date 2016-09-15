@@ -17,8 +17,7 @@ class PetsController < OpenReadController
   # POST /pets/1.json
 
   def create
-    @pet = current_user.pets.build(:name, :breed, :born_on, :gender,
-                                   :owner_name, :only_pet)
+    @pet = current_user.pets.build(pet_params)
     # something similar to POST sign-in with creds linking to the sign-up form
     # to go here to verify that such fields are not left blank
     if @pet.save
