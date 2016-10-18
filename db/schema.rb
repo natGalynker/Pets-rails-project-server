@@ -26,19 +26,19 @@ ActiveRecord::Schema.define(version: 20160816232221) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "pets", force: :cascade do |t|
-    t.text     "name",       null: false
-    t.text     "breed",      null: false
-    t.date     "born_on",    null: false
-    t.text     "gender",     null: false
-    t.boolean  "neutered"
-    t.boolean  "feral"
-    t.boolean  "only_pet"
-    t.boolean  "rabes_shot"
-    t.boolean  "declawed"
-    t.text     "owner_name", null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "name",                       null: false
+    t.text     "breed",                      null: false
+    t.date     "born_on",                    null: false
+    t.text     "gender",                     null: false
+    t.boolean  "neutered",   default: false
+    t.boolean  "feral",      default: false
+    t.boolean  "only_pet",   default: false
+    t.boolean  "rabes_shot", default: false
+    t.boolean  "declawed",   default: false
+    t.text     "owner_name",                 null: false
+    t.integer  "user_id",                    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id", using: :btree
