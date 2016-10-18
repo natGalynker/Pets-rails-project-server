@@ -1,2 +1,2 @@
 curl --include --request GET http://localhost:3000/pets \
-  --header "Authorization: Token token=BAhJIiU4ZjQzZGI1MTc2ZmMzMWM0Y2M3MTdmNTQ2NGU5MmZlYgY6BkVG--cc02e8692dce4652e5a6c6d21cde06a4b5d1326f"
+  --header "Authorization: Token token=$TOKEM"
