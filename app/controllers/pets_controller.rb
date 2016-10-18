@@ -51,6 +51,7 @@ class PetsController < OpenReadController
   end
 
   def pet_params
+    # set booleans default to false so they will display for GET
     params.require(:pet).permit(:name, :breed, :born_on, :gender,
                                 :owner_name, :only_pet, :neutered,
                                 :rabes_shot, :feral, :declawed)
