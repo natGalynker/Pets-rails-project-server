@@ -303,12 +303,6 @@ curl --include --request GET http://localhost:3000/pets \
   --header "Authorization: Token token=$TOKEN"
 ```
 
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
 
 ```
 #### GET /pets/:id
@@ -321,7 +315,7 @@ curl --include --request GET http://localhost:3000/pets/$ID \
 ```
 
 
-#### PATCH /change-password/:id
+#### PATCH /pets/:id
 
 Request:
 
